@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{page_title}} | {{title}}</title>
-</head>
+  {% include "utils/header.html" %}
 <body>
-  <h1>{{page_title}}</h1>
-  <p>{{message}}</p>
-  <a href="/">Indexページへ</a>
+  <h1 class="title">{{page_title}}</h1>
+  <p class="subtitle">{{message}}</p>
+  <a class="button" href="/">Indexページへ</a>
 </body>
 </html>

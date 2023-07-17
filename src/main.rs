@@ -3,7 +3,6 @@ use axum::{
     response::{Html, IntoResponse},
     routing, Router, Server,
 };
-// use std::convert::Infallible;
 use tera::Tera;
 
 #[tokio::main]
@@ -25,31 +24,34 @@ fn common_context() -> tera::Context {
     context
 }
 
-async fn root() -> Html<String> {
-    let tera = Tera::new("frontend/*.html").unwrap();
+fn tera_include() -> Tera {
+    let tera = Tera::new("frontend/**/*").unwrap();
+    tera
+}
 
+async fn root() -> Html<String> {
+    let tera = tera_include();
     let mut context = common_context();
     context.insert("page_title", "Index");
-    context.insert("message", "indexページでのメッセージです。");
+    context.insert("message", "This is Index page.");
 
     let output = tera.render("index.html", &context);
     Html(output.unwrap())
 }
 
 async fn about_page() -> Html<String> {
-    let tera = Tera::new("frontend/pages/*.html").unwrap();
-
+    let tera = tera_include();
     let mut context = common_context();
     context.insert("page_title", "About");
-    context.insert("message", "aboutページでのメッセージです。");
-    let output = tera.render("about.html", &context);
+    context.insert("message", "This is About page.");
+    let output = tera.render("pages/about.html", &context);
     Html(output.unwrap())
 }
 
 async fn not_found() -> impl IntoResponse {
-    let tera = Tera::new("frontend/pages/*.html").unwrap();
+    let tera = tera_include();
     let mut context = common_context();
     context.insert("page_title", "Not Found");
-    let output = tera.render("not_found.html", &context);
+    let output = tera.render("pages/not_found.html", &context);
     (StatusCode::NOT_FOUND, Html(output.unwrap()))
 }
