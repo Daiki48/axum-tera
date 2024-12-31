@@ -1,14 +1,18 @@
 [package]
 name = "axum-tera"
-version = "0.1.0"
+version = "1.0.0"
+authors = ["Daiki Nakashima"]
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
-axum = "0.6.18"
-tokio = { version = "1.29.1", features = ['full']}
-hyper = { version = "0.14.27", features = ['full']}
-tower = { version = "0.4.13", features = ['full']}
-axum-template = "1.0.0"
-tera = "1.19.0"
+axum = { version = "0.7.9", features = ["macros"] }
+tokio = { version = "1.42.0", features = ['full']}
+hyper = { version = "1.5.2", features = ['full']}
+tower = { version = "0.5.2", features = ['full']}
+axum-template = "2.4.0"
+tera = "1.20.0"
+axum-macros = "0.4.2"
+
+[dev-dependencies]
+reqwest = { version = "0.12.11", features = ["json"] }
+tokio = { version = "1.42.0", features = ["full"] }
