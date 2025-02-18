@@ -77,7 +77,6 @@ mod tests {
     #[tokio::test]
     async fn test_root() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
         let app = Router::new().route("/", get(root));
-        // let addr = "127.0.0.1:3000";
         let listener = tokio::net::TcpListener::bind("127.0.0.1:3000").await?;
         let server = task::spawn(async move {
             axum::serve(listener, app).await?;
