@@ -1,18 +1,18 @@
 [package]
 name = "axum-tera"
-version = "1.0.0"
+version = "1.1.0"
 authors = ["Daiki Nakashima"]
 edition = "2021"
 
 [dependencies]
-axum = { version = "0.7.9", features = ["macros"] }
-tokio = { version = "1.42.0", features = ['full']}
-hyper = { version = "1.5.2", features = ['full']}
+axum = { version = "0.8.1", features = ["macros"] }
+tokio = { version = "1.43.0", features = ['full']}
+hyper = { version = "1.6.0", features = ['full']}
 tower = { version = "0.5.2", features = ['full']}
-axum-template = "2.4.0"
+axum-template = "3.0.0"
 tera = "1.20.0"
-axum-macros = "0.4.2"
+axum-macros = "0.5.0"
 
 [dev-dependencies]
-reqwest = { version = "0.12.11", features = ["json"] }
-tokio = { version = "1.42.0", features = ["full"] }
+reqwest = { version = "0.12.12", features = ["json"] }
+tokio = { version = "1.43.0", features = ["full"] }
